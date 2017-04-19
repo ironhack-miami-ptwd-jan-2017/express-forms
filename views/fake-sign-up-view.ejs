@@ -1,0 +1,27 @@
+<h2> Sign Up </h2>
+
+  <!--    app.get('/user-data', ...) -->
+  <!--         |        |            -->
+  <!--         |        =========    -->
+  <!--         |                |    -->
+<form method="get" action="/user-data">
+  <label for="full-name-input"> Full Name </label>
+  <input  id="full-name-input" type="text" name="fullNameValue">
+    <!--                                               |        -->
+    <!--                               req.query.fullNameValue  -->
+  <br>
+
+  <label for="email-input"> Email </label>
+  <input  id="email-input" type="email" name="emailValue">
+    <!--                                           |      -->
+    <!--                            req.query.emailValue  -->
+  <br>
+
+  <label for="password-input"> Password </label>
+  <input  id="password-input" type="password" name="passwordValue">
+    <!--                                                 |         -->
+    <!--                                  req.query.passwordValue  -->
+  <br>
+
+  <button> Sign Up </button>
+</form>
