@@ -1,5 +1,6 @@
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
+const bodyParser = require('body-parser');
 
 
 const app = express();
@@ -9,6 +10,7 @@ app.set('layout', 'layouts/main-layout.ejs');
 
 app.use(express.static('public'));
 app.use(expressLayouts);
+app.use(bodyParser.urlencoded({ extended: true }));
 
 
 app.get('/', (req, res, next) => {
@@ -61,8 +63,11 @@ app.get('/fake-login', (req, res, next) => {
   // |         |
 app.post('/fake-login', (req, res, next) => {
   console.log('POST submission!');
-  console.log( req.query );
-    // req.query = {}
+  console.log( req.body );
+    // req.body = {
+    //   userEmail: 'a@a.a',
+    //   userPassword: 'aaaaaaaa'
+    // }
 
   res.render(
     'user-data-view.ejs',
@@ -70,10 +75,10 @@ app.post('/fake-login', (req, res, next) => {
       fullName: 'None',
         //   <input name="userEmail">
         //                    |
-      email:    req.query.userEmail,
+      email:    req.body.userEmail,
         //   <input name="userPassword">
         //                    |
-      password: req.query.userPassword
+      password: req.body.userPassword
     }
   );
 });
