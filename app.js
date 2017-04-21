@@ -68,19 +68,15 @@ app.post('/fake-login', (req, res, next) => {
     //   userEmail: 'a@a.a',
     //   userPassword: 'aaaaaaaa'
     // }
+  const email = req.body.userEmail;
+  const password = req.body.userPassword;
 
-  res.render(
-    'user-data-view.ejs',
-    {
-      fullName: 'None',
-        //   <input name="userEmail">
-        //                    |
-      email:    req.body.userEmail,
-        //   <input name="userPassword">
-        //                    |
-      password: req.body.userPassword
-    }
-  );
+  if (email === 'ironhacker@example.com' && password === 'password') {
+    res.render('welcome-view.ejs', { myEmail: email });
+  }
+  else {
+    res.render('go-away-view.ejs');
+  }
 });
 
 
